@@ -380,7 +380,7 @@ export default function Index() {
               <div className="space-y-6">
                 {[
                   { icon: "Phone", label: "Телефон", val: "+7 910 955-03-00 — Станислав" },
-                  { icon: "Mail", label: "Почта", val: "i@auljanova.ru" },
+                  { icon: "Mail", label: "Почта", val: "missis.alio@yandex.ru" },
                   { icon: "MapPin", label: "Адрес", val: "Ярославль, Яковлевская ул., р-н Заволжский" },
                   { icon: "Clock", label: "Режим работы", val: "Пн–Вс, 07:00–20:00" },
                   { icon: "Car", label: "Выезд", val: "По всей Ярославской области и другим регионам РФ" },
@@ -413,7 +413,7 @@ export default function Index() {
                   ВКонтакте
                 </a>
                 <a
-                  href="mailto:i@auljanova.ru"
+                  href="mailto:missis.alio@yandex.ru"
                   className="inline-flex items-center justify-center gap-3 border border-zinc-600 text-zinc-200 text-sm px-6 py-4 hover:border-zinc-400 hover:text-white transition-colors tracking-wide"
                 >
                   <Icon name="Mail" size={16} />
@@ -501,9 +501,9 @@ export default function Index() {
                   <span className="text-xs font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors w-4">ВК</span>
                   <span className="text-sm text-zinc-300">vk.com/id646934358</span>
                 </a>
-                <a href="mailto:i@auljanova.ru" className="flex items-center gap-4 bg-zinc-800 px-6 py-4 hover:bg-zinc-700 transition-colors group">
+                <a href="mailto:missis.alio@yandex.ru" className="flex items-center gap-4 bg-zinc-800 px-6 py-4 hover:bg-zinc-700 transition-colors group">
                   <Icon name="Mail" size={16} className="text-zinc-400 group-hover:text-zinc-200 transition-colors" />
-                  <span className="text-sm text-zinc-300">i@auljanova.ru</span>
+                  <span className="text-sm text-zinc-300">missis.alio@yandex.ru</span>
                 </a>
               </div>
             </AnimatedSection>
