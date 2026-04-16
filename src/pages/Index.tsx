@@ -85,7 +85,6 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 export default function Index() {
   const active = useScrollSpy();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
 
   return (
     <div className="font-golos bg-white text-zinc-900">
@@ -358,6 +357,7 @@ export default function Index() {
               <div className="space-y-6">
                 {[
                   { icon: "Phone", label: "Телефон", val: "+7 910 955-03-00 — Станислав" },
+                  { icon: "Mail", label: "Почта", val: "i@auljanova.ru" },
                   { icon: "MapPin", label: "Адрес", val: "Ярославль, Яковлевская ул., р-н Заволжский" },
                   { icon: "Clock", label: "Режим работы", val: "Пн–Вс, 07:00–20:00" },
                   { icon: "Car", label: "Выезд", val: "По всему Ярославлю и другим регионам РФ" },
@@ -373,13 +373,30 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              <a
-                href="tel:+79109550300"
-                className="mt-8 inline-flex items-center gap-3 bg-white text-zinc-900 text-sm font-medium px-8 py-4 hover:bg-zinc-200 transition-colors tracking-wide"
-              >
-                <Icon name="Phone" size={16} />
-                Позвонить Станиславу
-              </a>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="tel:+79109550300"
+                  className="inline-flex items-center justify-center gap-3 bg-white text-zinc-900 text-sm font-medium px-6 py-4 hover:bg-zinc-200 transition-colors tracking-wide"
+                >
+                  <Icon name="Phone" size={16} />
+                  Позвонить
+                </a>
+                <a
+                  href="https://vk.com/id646934358"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 border border-zinc-600 text-zinc-200 text-sm px-6 py-4 hover:border-zinc-400 hover:text-white transition-colors tracking-wide"
+                >
+                  ВКонтакте
+                </a>
+                <a
+                  href="mailto:i@auljanova.ru"
+                  className="inline-flex items-center justify-center gap-3 border border-zinc-600 text-zinc-200 text-sm px-6 py-4 hover:border-zinc-400 hover:text-white transition-colors tracking-wide"
+                >
+                  <Icon name="Mail" size={16} />
+                  Почта
+                </a>
+              </div>
               <div className="mt-6 overflow-hidden">
                 <iframe
                   src="https://yandex.ru/map-widget/v1/?ll=39.838509%2C57.626560&z=15&pt=39.838509,57.626560,pm2rdm"
@@ -393,49 +410,48 @@ export default function Index() {
               </div>
             </AnimatedSection>
             <AnimatedSection>
-              <div className="bg-zinc-800 p-8">
-                <h3 className="font-cormorant text-2xl font-light text-white mb-6">Оставить заявку</h3>
-                <form
-                  className="space-y-4"
-                  onSubmit={(e) => { e.preventDefault(); alert("Заявка отправлена! Мы свяжемся с вами."); }}
+              <div className="space-y-4">
+                <a
+                  href="tel:+79109550300"
+                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
                 >
-                  <div>
-                    <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Ваше имя</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500"
-                      placeholder="Иван Иванов"
-                    />
+                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
+                    <Icon name="Phone" size={20} className="text-zinc-300" />
                   </div>
                   <div>
-                    <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Телефон</label>
-                    <input
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500"
-                      placeholder="+7 (___) ___-__-__"
-                    />
+                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">Позвонить</p>
+                    <p className="font-cormorant text-2xl font-light text-white">+7 910 955-03-00</p>
+                    <p className="text-xs text-zinc-400 mt-0.5">Станислав · Пн–Вс, 07:00–20:00</p>
+                  </div>
+                </a>
+                <a
+                  href="https://vk.com/id646934358"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
+                >
+                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
+                    <span className="text-zinc-300 text-sm font-bold">ВК</span>
                   </div>
                   <div>
-                    <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Сообщение</label>
-                    <textarea
-                      rows={4}
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500 resize-none"
-                      placeholder="Опишите ваш проект, размеры проёма, пожелания по материалам..."
-                    />
+                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">ВКонтакте</p>
+                    <p className="font-cormorant text-2xl font-light text-white">vk.com/id646934358</p>
+                    <p className="text-xs text-zinc-400 mt-0.5">Написать сообщение</p>
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-zinc-900 text-sm font-medium py-4 hover:bg-zinc-200 transition-colors tracking-wide"
-                  >
-                    Отправить заявку
-                  </button>
-                </form>
+                </a>
+                <a
+                  href="mailto:i@auljanova.ru"
+                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
+                >
+                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
+                    <Icon name="Mail" size={20} className="text-zinc-300" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">Электронная почта</p>
+                    <p className="font-cormorant text-2xl font-light text-white">i@auljanova.ru</p>
+                    <p className="text-xs text-zinc-400 mt-0.5">Ответим в течение дня</p>
+                  </div>
+                </a>
               </div>
             </AnimatedSection>
           </div>
