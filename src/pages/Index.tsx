@@ -155,13 +155,19 @@ export default function Index() {
       <section id="home" className="min-h-screen flex flex-col justify-end pb-20 pt-32 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
           <div>
-            <p className="text-xs tracking-[0.25em] text-zinc-400 uppercase mb-6">Изготовление лестниц с 2008 года</p>
+            <p className="text-xs tracking-[0.25em] text-zinc-400 uppercase mb-6">Ярославль и область · Без посредников</p>
             <h1 className="font-cormorant text-6xl md:text-8xl font-light leading-[0.9] text-zinc-900 mb-8">
-              Лестницы,<br />
-              <em className="italic">которые</em><br />
-              остаются
+              Ж/б лестницы<br />
+              <em className="italic">любой</em><br />
+              сложности
             </h1>
-            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <p className="text-sm text-zinc-500 leading-relaxed max-w-md mb-2">
+              Винтовые, П-образные, Г-образные и другие конструкции — внутри и снаружи помещения. Замер и консультация бесплатно. Срок изготовления 3–5 дней.
+            </p>
+            <p className="text-sm text-zinc-500 leading-relaxed max-w-md">
+              Работаем с вашим или нашим материалом. При заказе двух конструкций на одном объекте — хорошая скидка на вторую. Работаем круглый год.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button
                 onClick={() => scrollTo("jb")}
                 className="bg-zinc-900 text-white text-sm px-8 py-4 hover:bg-zinc-700 transition-colors tracking-wide"
@@ -172,16 +178,16 @@ export default function Index() {
                 onClick={() => scrollTo("contacts")}
                 className="border border-zinc-300 text-zinc-700 text-sm px-8 py-4 hover:border-zinc-600 transition-colors tracking-wide"
               >
-                Связаться
+                Бесплатный замер
               </button>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: "Лет опыта", value: "10+" },
-              { label: "Мастеров", value: "2–4" },
+              { label: "Срок исполнения", value: "3–5 дн." },
+              { label: "Замер", value: "Бесплатно" },
               { label: "Гарантия", value: "Есть" },
-              { label: "Работаем", value: "Пн–Вс" },
+              { label: "Работаем", value: "Круглый год" },
             ].map((stat) => (
               <div key={stat.label} className="bg-zinc-50 p-6">
                 <div className="font-cormorant text-4xl font-light text-zinc-900 mb-1">{stat.value}</div>
@@ -192,11 +198,11 @@ export default function Index() {
         </div>
         <div className="mt-20 h-px bg-zinc-100" />
         <div className="flex flex-wrap gap-4 md:gap-8 pt-6 text-xs text-zinc-400 tracking-wide">
-          <span>Дерево</span><span>—</span>
-          <span>Металл</span><span>—</span>
-          <span>Стекло</span><span>—</span>
-          <span>Железобетон</span><span>—</span>
-          <span>Комбинированные</span>
+          <span>Винтовые</span><span>—</span>
+          <span>П-образные</span><span>—</span>
+          <span>Г-образные</span><span>—</span>
+          <span>Внутри и снаружи</span><span>—</span>
+          <span>Ваш или наш материал</span>
         </div>
       </section>
 
@@ -299,18 +305,18 @@ export default function Index() {
                 временем
               </h2>
               <div className="space-y-5 text-sm text-zinc-500 leading-relaxed">
-                <p>Более 10 лет занимаемся бетонными работами в Ярославле. Специализируемся на монолитных железобетонных лестницах для частных домов, коттеджей и коммерческих объектов.</p>
-                <p>Работаем бригадой 2–4 мастера. Выезжаем по всему Ярославлю и другим областям России. Станислав лично контролирует каждый объект.</p>
-                <p>Работаем по договору. Готовим все документы: договор, расписку, акт. Материалы закупаем самостоятельно. Есть гарантия на выполненные работы.</p>
+                <p>Изготавливаем ж/б лестницы любой сложности и конструкции — винтовые, П-образные, Г-образные и другие. Как внутри помещения, так и снаружи. Чистоту и качество гарантируем.</p>
+                <p>Срок исполнения 3–5 дней. Возможны варианты с вашим и нашим материалом. Замер и консультация — бесплатно. Индивидуальный подход к каждому объекту.</p>
+                <p>При заказе двух лестниц (бетонных конструкций) на одном объекте — хорошая скидка на вторую. Работаем в Ярославской и соседних областях без посредников. Круглый год.</p>
               </div>
             </AnimatedSection>
             <AnimatedSection>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { val: "10+", label: "Лет опыта" },
-                  { val: "2–4", label: "Мастера в бригаде" },
-                  { val: "Есть", label: "Гарантия на работу" },
-                  { val: "Пн–Вс", label: "Работаем без выходных" },
+                  { val: "3–5", label: "Дней срок исполнения" },
+                  { val: "Скидка", label: "На вторую лестницу" },
+                  { val: "Круглый год", label: "Работаем зима/лето" },
                 ].map((s) => (
                   <div key={s.label} className="border border-zinc-100 p-8">
                     <div className="font-cormorant text-4xl font-light text-zinc-900 mb-2">{s.val}</div>
