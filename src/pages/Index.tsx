@@ -193,7 +193,7 @@ export default function Index() {
                 <h2 className="font-cormorant text-5xl md:text-6xl font-light text-zinc-900">Портфолио</h2>
               </div>
               <p className="hidden md:block text-sm text-zinc-400 max-w-xs text-right">
-                Более 800 реализованных проектов в Москве и Московской области
+                Работаем по всей Ярославской области и другим регионам РФ
               </p>
             </div>
           </AnimatedSection>
@@ -360,7 +360,7 @@ export default function Index() {
                   { icon: "Mail", label: "Почта", val: "i@auljanova.ru" },
                   { icon: "MapPin", label: "Адрес", val: "Ярославль, Яковлевская ул., р-н Заволжский" },
                   { icon: "Clock", label: "Режим работы", val: "Пн–Вс, 07:00–20:00" },
-                  { icon: "Car", label: "Выезд", val: "По всему Ярославлю и другим регионам РФ" },
+                  { icon: "Car", label: "Выезд", val: "По всей Ярославской области и другим регионам РФ" },
                 ].map((c) => (
                   <div key={c.label} className="flex items-start gap-4">
                     <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center flex-shrink-0 mt-0.5">
