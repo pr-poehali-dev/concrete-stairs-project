@@ -3,23 +3,17 @@ import Icon from "@/components/ui/icon";
 
 const NAV_LINKS = [
   { label: "Главная", id: "home" },
-  { label: "Портфолио", id: "portfolio" },
-  { label: "Ж/б лестницы", id: "jb" },
+  { label: "Наши работы", id: "jb" },
   { label: "Услуги", id: "services" },
   { label: "О нас", id: "about" },
   { label: "Контакты", id: "contacts" },
 ];
 
-const PORTFOLIO_ITEMS = [
-  { title: "Прямая маршевая", material: "Дуб / металл", year: "2024", bg: "bg-stone-200", accent: "from-stone-300 to-stone-100", photo: null },
-  { title: "Винтовая классика", material: "Сосна / чёрный металл", year: "2024", bg: "bg-zinc-200", accent: "from-zinc-300 to-zinc-100", photo: null },
-  { title: "Г-образная", material: "Ясень / нержавеющая сталь", year: "2023", bg: "bg-neutral-200", accent: "from-neutral-300 to-neutral-100", photo: null },
-  { title: "П-образная", material: "Дуб / белый металл", year: "2023", bg: "bg-stone-300", accent: "from-stone-400 to-stone-200", photo: null },
-  { title: "На больцах", material: "Бук / стекло", year: "2023", bg: "bg-zinc-300", accent: "from-zinc-400 to-zinc-200", photo: null },
-  { title: "Консольная", material: "Дуб / скрытый металл", year: "2022", bg: "bg-neutral-300", accent: "from-neutral-400 to-neutral-200", photo: null },
-];
-
 const JB_PHOTOS = [
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/58b60c7e-0594-4926-a041-573c3517c38f.jpg", title: "Г-образная ж/б", desc: "Двухмаршевая с забежными ступенями" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/bf6da054-0ae5-4734-bd00-d98790c3c01c.jpg", title: "П-образная ж/б", desc: "Многомаршевая конструкция" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/c1171b0f-7e68-4ba7-92d6-05bb762b06bf.jpg", title: "Маршевая с закруглением", desc: "С закруглённым нижним маршем" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/db9d71e5-0f7e-4e7e-8195-5cf75ddbd91e.jpg", title: "П-образная вид сверху", desc: "Вид сверху, закрытый проём" },
   { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/4f4bf395-1e12-4ee4-a136-fbe208b45e14.png", title: "П-образная ж/б", desc: "Двухмаршевая с поворотом" },
   { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/5af41e1f-1eca-4e31-b14c-de7340e4a80a.jpg", title: "Маршевая ж/б", desc: "Прямой марш с площадкой" },
   { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/bbdfe161-da14-4be2-9a55-c5a49db2dd68.jpg", title: "Г-образная ж/б", desc: "С закруглённым нижним маршем" },
@@ -169,7 +163,7 @@ export default function Index() {
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <button
-                onClick={() => scrollTo("portfolio")}
+                onClick={() => scrollTo("jb")}
                 className="bg-zinc-900 text-white text-sm px-8 py-4 hover:bg-zinc-700 transition-colors tracking-wide"
               >
                 Смотреть работы
@@ -206,46 +200,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ПОРТФОЛИО */}
-      <section id="portfolio" className="py-24 px-6 bg-zinc-50">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <div className="flex items-end justify-between mb-14">
-              <div>
-                <p className="text-xs tracking-[0.25em] text-zinc-400 uppercase mb-3">Наши работы</p>
-                <h2 className="font-cormorant text-5xl md:text-6xl font-light text-zinc-900">Портфолио</h2>
-              </div>
-              <p className="hidden md:block text-sm text-zinc-400 max-w-xs text-right">
-                Работаем по всей Ярославской области и другим регионам РФ
-              </p>
-            </div>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PORTFOLIO_ITEMS.map((item) => (
-              <AnimatedSection key={item.title}>
-                <div className={`group relative overflow-hidden cursor-pointer ${item.bg}`}>
-                  <div className={`h-64 bg-gradient-to-br ${item.accent} flex items-center justify-center`}>
-                    <div className="text-center opacity-40">
-                      <Icon name="Layers" size={40} className="mx-auto mb-2 text-zinc-600" />
-                      <p className="text-xs text-zinc-600 tracking-widest uppercase">Фото</p>
-                    </div>
-                  </div>
-                  <div className="p-5 bg-white">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="font-cormorant text-xl font-medium text-zinc-900">{item.title}</h3>
-                        <p className="text-xs text-zinc-500 mt-1">{item.material}</p>
-                      </div>
-                      <span className="text-xs text-zinc-400">{item.year}</span>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 border border-zinc-900/0 group-hover:border-zinc-900/20 transition-colors" />
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Ж/Б ЛЕСТНИЦЫ */}
       <section id="jb" className="py-24 px-6 bg-stone-900 text-white">
@@ -264,7 +219,7 @@ export default function Index() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-12">
             {JB_PHOTOS.map((photo, i) => (
               <AnimatedSection key={i}>
                 <div className="group relative overflow-hidden aspect-[3/4] cursor-pointer">
