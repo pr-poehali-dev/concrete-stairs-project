@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { label: "Портфолио", id: "portfolio" },
   { label: "Ж/б лестницы", id: "jb" },
   { label: "Услуги", id: "services" },
-  { label: "Цены", id: "prices" },
   { label: "О нас", id: "about" },
   { label: "Контакты", id: "contacts" },
 ];
@@ -37,78 +36,7 @@ const SERVICES = [
   { icon: "Palette", title: "Дизайн-проект", desc: "Разработка индивидуального дизайна, подбор материалов и отделки под интерьер вашего дома." },
 ];
 
-const PRICE_CATEGORIES = [
-  {
-    title: "Прямые маршевые лестницы",
-    subtitle: "Классическое решение для любого интерьера",
-    items: [
-      { name: "Прямая на деревянных косоурах (сосна)", price: "от 85 000 ₽" },
-      { name: "Прямая на металлических косоурах", price: "от 120 000 ₽" },
-      { name: "Прямая на больцах (стекло)", price: "от 180 000 ₽" },
-      { name: "Прямая консольная (скрытый металл)", price: "от 250 000 ₽" },
-    ],
-  },
-  {
-    title: "Поворотные лестницы",
-    subtitle: "Г-образные и П-образные конструкции",
-    items: [
-      { name: "Г-образная с площадкой (дерево)", price: "от 110 000 ₽" },
-      { name: "Г-образная с забежными ступенями", price: "от 135 000 ₽" },
-      { name: "П-образная с площадкой (дерево)", price: "от 140 000 ₽" },
-      { name: "П-образная комбинированная", price: "от 195 000 ₽" },
-    ],
-  },
-  {
-    title: "Винтовые лестницы",
-    subtitle: "Компактные конструкции для ограниченного пространства",
-    items: [
-      { name: "Винтовая деревянная (сосна, д.120 см)", price: "от 95 000 ₽" },
-      { name: "Винтовая деревянная (дуб, д.120 см)", price: "от 130 000 ₽" },
-      { name: "Винтовая металлическая", price: "от 115 000 ₽" },
-      { name: "Винтовая комбинированная (дуб+металл)", price: "от 200 000 ₽" },
-    ],
-  },
-  {
-    title: "Ограждения и перила",
-    subtitle: "Отдельно или в составе лестницы",
-    items: [
-      { name: "Деревянные перила (пог. м)", price: "от 3 500 ₽/м" },
-      { name: "Металлические перила кованые (пог. м)", price: "от 6 000 ₽/м" },
-      { name: "Перила из нержавеющей стали (пог. м)", price: "от 8 500 ₽/м" },
-      { name: "Ограждение со стеклом (пог. м)", price: "от 12 000 ₽/м" },
-    ],
-  },
-  {
-    title: "Материалы ступеней",
-    subtitle: "Стоимость одной ступени по породам дерева",
-    items: [
-      { name: "Сосна (клееный щит)", price: "от 1 800 ₽/шт" },
-      { name: "Берёза", price: "от 2 400 ₽/шт" },
-      { name: "Ясень", price: "от 3 200 ₽/шт" },
-      { name: "Дуб", price: "от 4 500 ₽/шт" },
-    ],
-  },
-  {
-    title: "Железобетонные лестницы (ж/б)",
-    subtitle: "Монолитные конструкции из армированного бетона",
-    items: [
-      { name: "Прямая маршевая ж/б (до 12 ступеней)", price: "от 90 000 ₽" },
-      { name: "Г-образная ж/б с площадкой", price: "от 140 000 ₽" },
-      { name: "П-образная ж/б с двумя маршами", price: "от 190 000 ₽" },
-      { name: "Забежная / винтовая ж/б", price: "от 160 000 ₽" },
-    ],
-  },
-  {
-    title: "Дополнительные услуги",
-    subtitle: "Замер, монтаж, гарантийное обслуживание",
-    items: [
-      { name: "Выезд замерщика (в черте города)", price: "Бесплатно" },
-      { name: "Разработка 3D-проекта", price: "от 5 000 ₽" },
-      { name: "Монтаж лестницы", price: "от 15 000 ₽" },
-      { name: "Реставрация и покраска", price: "от 20 000 ₽" },
-    ],
-  },
-];
+
 
 function useScrollSpy() {
   const [active, setActive] = useState("home");
@@ -181,12 +109,13 @@ export default function Index() {
               </button>
             ))}
           </nav>
-          <button
+          <a
+            href="tel:+79109550300"
             className="hidden md:flex items-center gap-2 bg-zinc-900 text-white text-sm px-5 py-2.5 hover:bg-zinc-700 transition-colors"
-            onClick={() => scrollTo("contacts")}
           >
-            Получить расчёт
-          </button>
+            <Icon name="Phone" size={14} />
+            +7 910 955-03-00
+          </a>
           <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
@@ -224,19 +153,19 @@ export default function Index() {
                 Смотреть работы
               </button>
               <button
-                onClick={() => scrollTo("prices")}
+                onClick={() => scrollTo("contacts")}
                 className="border border-zinc-300 text-zinc-700 text-sm px-8 py-4 hover:border-zinc-600 transition-colors tracking-wide"
               >
-                Прайс-лист
+                Связаться
               </button>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: "Проектов", value: "800+" },
-              { label: "Лет опыта", value: "16" },
-              { label: "Гарантия", value: "5 лет" },
-              { label: "Срок изготовления", value: "30 дней" },
+              { label: "Лет опыта", value: "10+" },
+              { label: "Мастеров", value: "2–4" },
+              { label: "Гарантия", value: "Есть" },
+              { label: "Работаем", value: "Пн–Вс" },
             ].map((stat) => (
               <div key={stat.label} className="bg-zinc-50 p-6">
                 <div className="font-cormorant text-4xl font-light text-zinc-900 mb-1">{stat.value}</div>
@@ -379,55 +308,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ЦЕНЫ */}
-      <section id="prices" className="py-24 px-6 bg-zinc-50">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <div className="mb-14">
-              <p className="text-xs tracking-[0.25em] text-zinc-400 uppercase mb-3">Стоимость работ</p>
-              <h2 className="font-cormorant text-5xl md:text-6xl font-light text-zinc-900">Прайс-лист</h2>
-              <p className="text-sm text-zinc-500 mt-4 max-w-lg">
-                Цены указаны ориентировочно. Точная стоимость рассчитывается после замера и уточнения всех параметров.
-              </p>
-            </div>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {PRICE_CATEGORIES.map((cat) => (
-              <AnimatedSection key={cat.title}>
-                <div className="bg-white p-8">
-                  <h3 className="font-cormorant text-2xl font-medium text-zinc-900 mb-1">{cat.title}</h3>
-                  <p className="text-xs text-zinc-400 mb-6">{cat.subtitle}</p>
-                  <div>
-                    {cat.items.map((item, ii) => (
-                      <div
-                        key={item.name}
-                        className={`flex items-center justify-between py-3.5 ${ii < cat.items.length - 1 ? "border-b border-zinc-100" : ""}`}
-                      >
-                        <span className="text-sm text-zinc-600 pr-4">{item.name}</span>
-                        <span className="text-sm font-medium text-zinc-900 whitespace-nowrap">{item.price}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <AnimatedSection className="mt-8">
-            <div className="bg-zinc-900 text-white p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <p className="font-cormorant text-2xl font-light mb-1">Нужен точный расчёт?</p>
-                <p className="text-sm text-zinc-400">Позвоните нам или оставьте заявку — рассчитаем бесплатно</p>
-              </div>
-              <button
-                onClick={() => scrollTo("contacts")}
-                className="border border-white text-white text-sm px-8 py-3.5 hover:bg-white hover:text-zinc-900 transition-colors whitespace-nowrap"
-              >
-                Заказать расчёт
-              </button>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+
 
       {/* О НАС */}
       <section id="about" className="py-24 px-6">
@@ -441,18 +322,18 @@ export default function Index() {
                 временем
               </h2>
               <div className="space-y-5 text-sm text-zinc-500 leading-relaxed">
-                <p>С 2008 года мы проектируем и изготавливаем лестницы для частных домов, коттеджей и коммерческих помещений. За эти годы воплотили в жизнь более 800 уникальных проектов.</p>
-                <p>Каждая лестница — индивидуальное изделие, которое мы создаём с учётом архитектуры дома, пожеланий владельца и требований безопасности. Работаем только с проверенными материалами.</p>
-                <p>Собственное производство площадью 2000 м² позволяет контролировать качество на каждом этапе — от заготовки до финишного покрытия.</p>
+                <p>Более 10 лет занимаемся бетонными работами в Ярославле. Специализируемся на монолитных железобетонных лестницах для частных домов, коттеджей и коммерческих объектов.</p>
+                <p>Работаем бригадой 2–4 мастера. Выезжаем по всему Ярославлю и другим областям России. Станислав лично контролирует каждый объект.</p>
+                <p>Работаем по договору. Готовим все документы: договор, расписку, акт. Материалы закупаем самостоятельно. Есть гарантия на выполненные работы.</p>
               </div>
             </AnimatedSection>
             <AnimatedSection>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { val: "2008", label: "Год основания" },
-                  { val: "800+", label: "Объектов сдано" },
-                  { val: "2000 м²", label: "Производство" },
-                  { val: "40+", label: "Мастеров в команде" },
+                  { val: "10+", label: "Лет опыта" },
+                  { val: "2–4", label: "Мастера в бригаде" },
+                  { val: "Есть", label: "Гарантия на работу" },
+                  { val: "Пн–Вс", label: "Работаем без выходных" },
                 ].map((s) => (
                   <div key={s.label} className="border border-zinc-100 p-8">
                     <div className="font-cormorant text-4xl font-light text-zinc-900 mb-2">{s.val}</div>
@@ -476,10 +357,10 @@ export default function Index() {
               </h2>
               <div className="space-y-6">
                 {[
-                  { icon: "Phone", label: "Телефон", val: "+7 (495) 000-00-00" },
-                  { icon: "Mail", label: "Email", val: "info@artlestnitsa.ru" },
-                  { icon: "MapPin", label: "Адрес", val: "Москва, ул. Примерная, д. 1" },
-                  { icon: "Clock", label: "Режим работы", val: "Пн–Сб, 9:00–19:00" },
+                  { icon: "Phone", label: "Телефон", val: "+7 910 955-03-00 — Станислав" },
+                  { icon: "MapPin", label: "Адрес", val: "Ярославль, Яковлевская ул., р-н Заволжский" },
+                  { icon: "Clock", label: "Режим работы", val: "Пн–Вс, 07:00–20:00" },
+                  { icon: "Car", label: "Выезд", val: "По всему Ярославлю и другим регионам РФ" },
                 ].map((c) => (
                   <div key={c.label} className="flex items-start gap-4">
                     <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -491,6 +372,24 @@ export default function Index() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <a
+                href="tel:+79109550300"
+                className="mt-8 inline-flex items-center gap-3 bg-white text-zinc-900 text-sm font-medium px-8 py-4 hover:bg-zinc-200 transition-colors tracking-wide"
+              >
+                <Icon name="Phone" size={16} />
+                Позвонить Станиславу
+              </a>
+              <div className="mt-6 overflow-hidden">
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?ll=39.838509%2C57.626560&z=15&pt=39.838509,57.626560,pm2rdm"
+                  width="100%"
+                  height="200"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full grayscale opacity-80"
+                  title="Карта"
+                />
               </div>
             </AnimatedSection>
             <AnimatedSection>
@@ -546,9 +445,9 @@ export default function Index() {
       {/* ФУТЕР */}
       <footer className="py-8 px-6 bg-zinc-950 text-zinc-600">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-cormorant text-lg text-zinc-400">АртЛестница</span>
-          <span className="text-xs">© 2024 АртЛестница. Все права защищены.</span>
-          <span className="text-xs">Изготовление лестниц с 2008 года</span>
+          <span className="font-cormorant text-lg text-zinc-400">Ж/б лестницы — Ярославль</span>
+          <span className="text-xs">© 2024. Все права защищены.</span>
+          <a href="tel:+79109550300" className="text-xs hover:text-zinc-400 transition-colors">+7 910 955-03-00</a>
         </div>
       </footer>
     </div>
