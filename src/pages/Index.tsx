@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import Icon from "@/components/ui/icon";
 
 const NAV_LINKS = [
@@ -85,6 +85,29 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 export default function Index() {
   const active = useScrollSpy();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!form.phone) return;
+    setFormStatus("sending");
+    try {
+      const res = await fetch("https://functions.poehali.dev/789ac8b8-978e-4325-aeea-22f327128359", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setFormStatus("done");
+        setForm({ name: "", phone: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  }
 
   return (
     <div className="font-golos bg-white text-zinc-900">
@@ -410,47 +433,77 @@ export default function Index() {
               </div>
             </AnimatedSection>
             <AnimatedSection>
-              <div className="space-y-4">
-                <a
-                  href="tel:+79109550300"
-                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
-                >
-                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
-                    <Icon name="Phone" size={20} className="text-zinc-300" />
+              <div className="bg-zinc-800 p-8 mb-4">
+                <h3 className="font-cormorant text-2xl font-light text-white mb-6">Оставить заявку</h3>
+                {formStatus === "done" ? (
+                  <div className="py-8 text-center">
+                    <div className="w-12 h-12 border border-zinc-500 flex items-center justify-center mx-auto mb-4">
+                      <Icon name="Check" size={22} className="text-white" />
+                    </div>
+                    <p className="text-white font-cormorant text-xl mb-2">Заявка отправлена!</p>
+                    <p className="text-zinc-400 text-sm">Мы свяжемся с вами в ближайшее время</p>
+                    <button onClick={() => setFormStatus("idle")} className="mt-6 text-xs text-zinc-500 hover:text-zinc-300 underline">
+                      Отправить ещё
+                    </button>
                   </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">Позвонить</p>
-                    <p className="font-cormorant text-2xl font-light text-white">+7 910 955-03-00</p>
-                    <p className="text-xs text-zinc-400 mt-0.5">Станислав · Пн–Вс, 07:00–20:00</p>
-                  </div>
+                ) : (
+                  <form className="space-y-4" onSubmit={handleSubmit}>
+                    <div>
+                      <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Ваше имя</label>
+                      <input
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500"
+                        placeholder="Иван Иванов"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Телефон *</label>
+                      <input
+                        type="tel"
+                        required
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500"
+                        placeholder="+7 (___) ___-__-__"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-zinc-400 block mb-2 tracking-wide">Сообщение</label>
+                      <textarea
+                        rows={3}
+                        value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        className="w-full bg-zinc-700 border border-zinc-600 text-white text-sm px-4 py-3 focus:outline-none focus:border-zinc-400 transition-colors placeholder:text-zinc-500 resize-none"
+                        placeholder="Опишите ваш проект, тип лестницы, размеры..."
+                      />
+                    </div>
+                    {formStatus === "error" && (
+                      <p className="text-red-400 text-xs">Ошибка отправки. Попробуйте ещё раз или позвоните нам.</p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={formStatus === "sending"}
+                      className="w-full bg-white text-zinc-900 text-sm font-medium py-4 hover:bg-zinc-200 transition-colors tracking-wide disabled:opacity-50"
+                    >
+                      {formStatus === "sending" ? "Отправляем..." : "Отправить заявку"}
+                    </button>
+                  </form>
+                )}
+              </div>
+              <div className="space-y-3">
+                <a href="tel:+79109550300" className="flex items-center gap-4 bg-zinc-800 px-6 py-4 hover:bg-zinc-700 transition-colors group">
+                  <Icon name="Phone" size={16} className="text-zinc-400 group-hover:text-zinc-200 transition-colors" />
+                  <span className="text-sm text-zinc-300">+7 910 955-03-00 — Станислав</span>
                 </a>
-                <a
-                  href="https://vk.com/id646934358"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
-                >
-                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
-                    <span className="text-zinc-300 text-sm font-bold">ВК</span>
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">ВКонтакте</p>
-                    <p className="font-cormorant text-2xl font-light text-white">vk.com/id646934358</p>
-                    <p className="text-xs text-zinc-400 mt-0.5">Написать сообщение</p>
-                  </div>
+                <a href="https://vk.com/id646934358" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-zinc-800 px-6 py-4 hover:bg-zinc-700 transition-colors group">
+                  <span className="text-xs font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors w-4">ВК</span>
+                  <span className="text-sm text-zinc-300">vk.com/id646934358</span>
                 </a>
-                <a
-                  href="mailto:i@auljanova.ru"
-                  className="flex items-center gap-5 bg-zinc-800 p-6 hover:bg-zinc-700 transition-colors group"
-                >
-                  <div className="w-12 h-12 border border-zinc-600 flex items-center justify-center flex-shrink-0 group-hover:border-zinc-400 transition-colors">
-                    <Icon name="Mail" size={20} className="text-zinc-300" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 mb-1 tracking-wide">Электронная почта</p>
-                    <p className="font-cormorant text-2xl font-light text-white">i@auljanova.ru</p>
-                    <p className="text-xs text-zinc-400 mt-0.5">Ответим в течение дня</p>
-                  </div>
+                <a href="mailto:i@auljanova.ru" className="flex items-center gap-4 bg-zinc-800 px-6 py-4 hover:bg-zinc-700 transition-colors group">
+                  <Icon name="Mail" size={16} className="text-zinc-400 group-hover:text-zinc-200 transition-colors" />
+                  <span className="text-sm text-zinc-300">i@auljanova.ru</span>
                 </a>
               </div>
             </AnimatedSection>
