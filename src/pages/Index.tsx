@@ -4,6 +4,7 @@ import Icon from "@/components/ui/icon";
 const NAV_LINKS = [
   { label: "Главная", id: "home" },
   { label: "Портфолио", id: "portfolio" },
+  { label: "Ж/б лестницы", id: "jb" },
   { label: "Услуги", id: "services" },
   { label: "Цены", id: "prices" },
   { label: "О нас", id: "about" },
@@ -11,12 +12,20 @@ const NAV_LINKS = [
 ];
 
 const PORTFOLIO_ITEMS = [
-  { title: "Прямая маршевая", material: "Дуб / металл", year: "2024", bg: "bg-stone-200", accent: "from-stone-300 to-stone-100" },
-  { title: "Винтовая классика", material: "Сосна / чёрный металл", year: "2024", bg: "bg-zinc-200", accent: "from-zinc-300 to-zinc-100" },
-  { title: "Г-образная", material: "Ясень / нержавеющая сталь", year: "2023", bg: "bg-neutral-200", accent: "from-neutral-300 to-neutral-100" },
-  { title: "П-образная", material: "Дуб / белый металл", year: "2023", bg: "bg-stone-300", accent: "from-stone-400 to-stone-200" },
-  { title: "На больцах", material: "Бук / стекло", year: "2023", bg: "bg-zinc-300", accent: "from-zinc-400 to-zinc-200" },
-  { title: "Консольная", material: "Дуб / скрытый металл", year: "2022", bg: "bg-neutral-300", accent: "from-neutral-400 to-neutral-200" },
+  { title: "Прямая маршевая", material: "Дуб / металл", year: "2024", bg: "bg-stone-200", accent: "from-stone-300 to-stone-100", photo: null },
+  { title: "Винтовая классика", material: "Сосна / чёрный металл", year: "2024", bg: "bg-zinc-200", accent: "from-zinc-300 to-zinc-100", photo: null },
+  { title: "Г-образная", material: "Ясень / нержавеющая сталь", year: "2023", bg: "bg-neutral-200", accent: "from-neutral-300 to-neutral-100", photo: null },
+  { title: "П-образная", material: "Дуб / белый металл", year: "2023", bg: "bg-stone-300", accent: "from-stone-400 to-stone-200", photo: null },
+  { title: "На больцах", material: "Бук / стекло", year: "2023", bg: "bg-zinc-300", accent: "from-zinc-400 to-zinc-200", photo: null },
+  { title: "Консольная", material: "Дуб / скрытый металл", year: "2022", bg: "bg-neutral-300", accent: "from-neutral-400 to-neutral-200", photo: null },
+];
+
+const JB_PHOTOS = [
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/4f4bf395-1e12-4ee4-a136-fbe208b45e14.png", title: "П-образная ж/б", desc: "Двухмаршевая с поворотом" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/5af41e1f-1eca-4e31-b14c-de7340e4a80a.jpg", title: "Маршевая ж/б", desc: "Прямой марш с площадкой" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/bbdfe161-da14-4be2-9a55-c5a49db2dd68.jpg", title: "Г-образная ж/б", desc: "С закруглённым нижним маршем" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/df7409f6-2532-429f-95b4-6145c1f8522b.jpg", title: "Винтовая ж/б", desc: "Компактная забежная конструкция" },
+  { url: "https://cdn.poehali.dev/projects/705ac054-ce69-4453-af09-fe16be3731e4/bucket/533b9280-6d5f-4cf4-a5ae-f264d267d20a.jpg", title: "Спиральная ж/б", desc: "Вид сверху, закрытый проём" },
 ];
 
 const SERVICES = [
@@ -77,6 +86,16 @@ const PRICE_CATEGORIES = [
       { name: "Берёза", price: "от 2 400 ₽/шт" },
       { name: "Ясень", price: "от 3 200 ₽/шт" },
       { name: "Дуб", price: "от 4 500 ₽/шт" },
+    ],
+  },
+  {
+    title: "Железобетонные лестницы (ж/б)",
+    subtitle: "Монолитные конструкции из армированного бетона",
+    items: [
+      { name: "Прямая маршевая ж/б (до 12 ступеней)", price: "от 90 000 ₽" },
+      { name: "Г-образная ж/б с площадкой", price: "от 140 000 ₽" },
+      { name: "П-образная ж/б с двумя маршами", price: "от 190 000 ₽" },
+      { name: "Забежная / винтовая ж/б", price: "от 160 000 ₽" },
     ],
   },
   {
@@ -231,6 +250,7 @@ export default function Index() {
           <span>Дерево</span><span>—</span>
           <span>Металл</span><span>—</span>
           <span>Стекло</span><span>—</span>
+          <span>Железобетон</span><span>—</span>
           <span>Комбинированные</span>
         </div>
       </section>
@@ -273,6 +293,64 @@ export default function Index() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Ж/Б ЛЕСТНИЦЫ */}
+      <section id="jb" className="py-24 px-6 bg-stone-900 text-white">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection>
+            <div className="flex items-end justify-between mb-14">
+              <div>
+                <p className="text-xs tracking-[0.25em] text-stone-400 uppercase mb-3">Монолитный железобетон</p>
+                <h2 className="font-cormorant text-5xl md:text-6xl font-light text-white">
+                  Ж/б лестницы
+                </h2>
+              </div>
+              <p className="hidden md:block text-sm text-stone-400 max-w-xs text-right leading-relaxed">
+                Надёжные монолитные конструкции из армированного бетона — для частных домов и коммерческих объектов
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+            {JB_PHOTOS.map((photo, i) => (
+              <AnimatedSection key={i}>
+                <div className="group relative overflow-hidden aspect-[3/4] cursor-pointer">
+                  <img
+                    src={photo.url}
+                    alt={photo.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <p className="font-cormorant text-base font-medium text-white leading-tight">{photo.title}</p>
+                    <p className="text-xs text-stone-300 mt-0.5">{photo.desc}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-stone-700 pt-12">
+              {[
+                { icon: "Shield", title: "Долговечность", desc: "Монолитный бетон служит десятилетиями без деформаций и скрипа" },
+                { icon: "Layers", title: "Любая отделка", desc: "Под дерево, плитку, ламинат, ковровое покрытие — на ваш выбор" },
+                { icon: "Ruler", title: "Любая форма", desc: "Прямые, Г-образные, П-образные, забежные и винтовые конструкции" },
+              ].map((f) => (
+                <div key={f.title} className="flex gap-4 items-start">
+                  <div className="w-9 h-9 border border-stone-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon name={f.icon} fallback="Star" size={16} className="text-stone-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-cormorant text-xl font-medium text-white mb-1">{f.title}</h4>
+                    <p className="text-sm text-stone-400 leading-relaxed">{f.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
